@@ -1,55 +1,36 @@
 ---
-configure_sudoers: yes
+configure_sudoers: no
 homebrew_install_path: /usr/local/homebrew
 homebrew_installed_packages:
-  - ansible
-  - docker
   - git
   - ssh-copy-id
-  - openssl
   - wget
   - brew-cask
   - dockutil
   - zsh
   - tmux
-  - mercurial
-  - phpmd
-  - php-code-sniffer
-  - php-cs-fixer
-  - phpunit
-  - php56
-  - php56-intl
-  - php56-xdebug
 
 homebrew_taps:
   - caskroom/cask
   - caskroom/versions
-  - homebrew/php
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
   - google-chrome
   - dropbox
   - firefox
-  - limechat
   - vagrant
   - virtualbox
-  - phpstorm8
-  - caskroom/homebrew-versions/java6
   - slack
   - istat-menus
   - atom
   - android-file-transfer
-  - limechat
   - spotify
-  - dockertoolbox
 
 dockitems_to_remove:
-  - Launchpad
   - Mail
   - Safari
   - Contacts
-  - Notes
   - Reminders
   - Maps
   - Photos
@@ -58,28 +39,18 @@ dockitems_to_remove:
   - iTunes
   - iBooks
   - App Store
-  - System Preferences
   - Calendar
 
 dockitems_to_persist:
   - name: Google Chrome
     path: "/Applications/Google Chrome.app"
-    pos: 1
+    pos: 3
   - name: Firefox
     path: "/Applications/Firefox.app"
     pos: 2
-  - name: PhpStorm
-    path: /Applications/PhpStorm.app
-    pos: 3
   - name: Slack
     path: /Applications/Slack.app
     pos: 4
-  - name: VirtualBox
-    path: /Applications/VirtualBox.app
-    pos: 5
-  - name: Terminal
-    path: /Applications/Utilities/Terminal.app
-    pos: 6
   - name: Spotify
     path: /Applications/Spotify.app
-    pos: 7
+    pos: 5
