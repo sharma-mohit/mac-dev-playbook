@@ -1,11 +1,16 @@
 ---
 - hosts: localhost
-  user: test
+  user: mohit
   connection: local
 
   vars_files:
     - vars/main.yml
 
   roles:
-    - geerlingguy.homebrew
+#    - geerlingguy.homebrew
     - dotfiles
+  tasks:
+   - debug: msg="Install OSXFuse and then FUSE-Ext2 + NTFS-3G"
+   - debug: msg='sudo mv "/Volumes/Macintosh HD/sbin/mount_ntfs" "/Volumes/Macintosh HD/sbin/mount_ntfs.orig"'
+   - debug: msg='sudo ln -s /usr/local/sbin/mount_ntfs "/Volumes/Macintosh HD/sbin/mount_ntfs"'
+#   - debug: msg='sudo sed -e 's/OPTIONS="auto_xattr,defer_permissions"/OPTIONS="auto_xattr,defer_permissions,rw+"/' -i.orig /System/Library/Filesystems/fuse-ext2.fs/fuse-ext2.util'

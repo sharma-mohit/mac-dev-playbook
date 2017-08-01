@@ -9,10 +9,15 @@ homebrew_installed_packages:
   - dockutil
   - zsh
   - tmux
+  - htop
+  - p7zip
+  - tree
+  - e2fsprogs
 
 homebrew_taps:
   - caskroom/cask
   - caskroom/versions
+  - caskroom/fonts
 
 homebrew_cask_appdir: /Applications
 homebrew_cask_apps:
@@ -22,10 +27,12 @@ homebrew_cask_apps:
   - vagrant
   - virtualbox
   - slack
-  - istat-menus
   - atom
   - android-file-transfer
   - spotify
+#  - iterm2
+  - font-inconsolata
+  - insomniax
 
 dockitems_to_remove:
   - Mail

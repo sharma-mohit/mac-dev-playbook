@@ -1,27 +1,29 @@
 ---
-- name: Clone dotfiles
-  git: repo=https://github.com/sharma-mohit/dotfiles.git dest=/Users/test/dotfiles recursive=yes
+#- name: Clone dotfiles
+#  git: repo=https://github.com/sharma-mohit/dotfiles.git dest=/Users/mohit/dotfiles recursive=yes
 
-- name: Get current Terminal profile.
-  shell: defaults read com.apple.Terminal 'Default Window Settings'
-  register: terminal_theme
-  changed_when: false
+- name: install oh-my-zsh
+  shell: sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
-- name: Ensure custom Terminal profile is added.
-  shell: open files/Solarized-Dark.terminal
-  changed_when: false
-  when: "'Solarized-Dark' not in terminal_theme.stdout"
+- name: dotfiles/bin/install
+  shell: bin/install
+  args:
+    chdir: /Users/mohit/dotfiles/
+  ignore_errors: yes
 
-- name: Ensure custom Terminal profile is set as default.
-  shell: "{{ item }}"
-  with_items:
-    - defaults write com.apple.Terminal 'Default Window Settings' -string 'Solarized-Dark'
-    - defaults write com.apple.Terminal 'Startup Window Settings' -string 'Solarized-Dark'
-  changed_when: false
-  when: "'Solarized Dark ansi' not in terminal_theme.stdout"
+- name: dotfiles/bin/setup_osx
+  shell: bin/setup_osx
+  args:
+    chdir: /Users/mohit/dotfiles/
+  ignore_errors: yes
 
-- name: Set zsh as shell
-  shell: defaults write com.apple.Terminal 'Shell' -string '/bin/zsh'
+- name: iterm settings
+  shell: contrib/install-settings.sh
+  args:
+    chdir: /Users/mohit/dotfiles/macosx-iterm2-settings/
+  ignore_errors: yes
+
+
 
 - name: Remove all crap from Dock
   shell: dockutil --remove '{{ item }}'
